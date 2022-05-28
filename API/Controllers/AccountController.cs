@@ -27,6 +27,12 @@ namespace API.Controllers
             if (await UserExists(registerDto.Username.ToLower()))
             {
                 return BadRequest("The Username is already exist");
+            }else if (registerDto.Username == null)
+            {
+                return BadRequest("The Username is required");
+            }else if (registerDto.Password == null)
+            {
+                return BadRequest("The Password is required");
             }
 
             using var hmac = new HMACSHA512();

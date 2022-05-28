@@ -7,26 +7,35 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { NavComponent } from './nav/nav.component'
 import { FormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { RegisterComponent } from './register/register.component';
-
+import { ListsComponent } from './lists/lists.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { SharedModule } from './_modules/shared.module';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListsComponent,
+    MessagesComponent,
+    MemberListComponent,
+    MemberDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule,
+    CarouselModule.forRoot(),
     BsDropdownModule.forRoot(),
-    CarouselModule.forRoot()
+    FormsModule, 
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
