@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using API.ApplicationIdentityExtensions;
 using API.ApplicationServiceExtensions;
 using API.Middelware;
+using API.Interfaces;
+using API.Data;
 
 namespace API
 {
@@ -22,7 +24,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationServices(_config);
-
+            
             services.AddControllers();
             services.AddCors();
 
