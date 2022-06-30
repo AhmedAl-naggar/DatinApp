@@ -23,6 +23,7 @@ import { ServerErrorComponent } from './Errors/server-error/server-error.compone
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { MemmberEditComponent } from './members/memmber-edit/memmber-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     NotFoundComponent,
     ServerErrorComponent,
     MemberCardComponent,
+    MemmberEditComponent,
   ],
   imports: [
     BrowserModule,
