@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,7 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { MemmberEditComponent } from './members/memmber-edit/memmber-edit.component';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { MemmberEditComponent } from './members/memmber-edit/memmber-edit.compon
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi:true},
-    {provide: HTTP_INTERCEPTORS, useClass:JwtInterceptor, multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass:JwtInterceptor, multi:true},
+    {provide: HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
 })
