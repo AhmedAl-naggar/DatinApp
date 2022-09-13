@@ -410,3 +410,4 @@ testem.log
 .DS_Store
 *.suo
 Thumbs.db
+API/appsettings.json
