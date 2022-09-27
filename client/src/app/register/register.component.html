@@ -1,18 +1,49 @@
-<h2>Registeration Form</h2>
-<hr>
-<h2 class="text-center text-primary"> Sign Up</h2>
-<form #registerForm="ngForm" (ngSubmit)="register()">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input [(ngModel)]="model.username" type="text" class="form-control" id="username" name="username"
-            aria-describedby="emailHelp" placeholder="Username">
-        <small id="usernameHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input [(ngModel)]="model.password" type="password" class="form-control" name="password" id="password"
-            placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-primary m-2">Submit</button>
-    <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
-</form>
+<div class="container" style="align-items:center ;">
+
+    <h2>Registeration Form</h2>
+    <hr>
+    <h2 class="text-center text-primary"> Sign Up</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" style="align-content: inherit;">
+
+        <div class="form-group">
+            <label class="control-label" style="margin-right: 10px;">I am a: </label>
+            <label class="radio-inline" style="margin-right: 10px;">
+                <input type="radio" value="male" formControlName="gender"> Male
+            </label>
+
+            <label class="radio-inline">
+                <input type="radio" value="female" formControlName="gender"> Female
+            </label>
+        </div>
+
+        <app-text-input [formControl]='registerForm.controls["knownAs"]' [label]="'Known As'"></app-text-input>
+        <app-date-input [formControl]='registerForm.controls["dateOfBirth"]' [maxDate]="maxDate"
+            [label]="'Date Of Birth'"></app-date-input>
+        <app-text-input [formControl]='registerForm.controls["city"]' [label]="'City'"></app-text-input>
+        <app-text-input [formControl]='registerForm.controls["country"]' [label]="'Country'"></app-text-input>
+        <app-text-input [formControl]='registerForm.controls["username"]' [label]="'Username'"></app-text-input>
+        <app-text-input [formControl]='registerForm.controls["password"]' [type]="'password'" [label]="'Password'">
+        </app-text-input>
+
+        <app-text-input [formControl]='registerForm.controls["confirmPassword"]' [type]="'password'"
+            [label]="'Confirm Password'">
+        </app-text-input>
+        
+        <div class="row" *ngIf="validationErrors.length>0">
+            <ul class="text-danger">
+                <li *ngFor="let error of validationErrors">
+                    {{error}}
+                </li>
+            </ul>
+        </div>
+
+
+
+        <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary m-2">Submit</button>
+        <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+    </form>
+
+
+
+
+</div>
