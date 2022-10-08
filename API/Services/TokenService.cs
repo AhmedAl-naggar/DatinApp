@@ -23,7 +23,8 @@ namespace API.Services
             // identifying what claims that will be emmbaded.
             var claims = new List<Claim>()
             {
-                new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.NameId,appUser.UserName)
+                new Claim(JwtRegisteredClaimNames.NameId,appUser.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName,appUser.UserName)
             };
 
             var creds = new SigningCredentials(_key,SecurityAlgorithms.HmacSha512Signature);
