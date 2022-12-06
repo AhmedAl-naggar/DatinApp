@@ -8,6 +8,7 @@ using API.Middelware;
 using API.Interfaces;
 using API.Data;
 using API.Helpers;
+using System.Text.Json.Serialization;
 
 namespace API
 {
@@ -25,10 +26,13 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationServices(_config);
-            
             services.AddControllers();
-            services.AddCors();
+            
+//             services.AddControllers().AddJsonOptions(x =>
+//    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
+            services.AddCors();;
+                       
             services.AddIdentitiyServices(_config);
 
         }
