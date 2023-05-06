@@ -16,7 +16,6 @@ export class AdminService {
   }
 
   updateSelectedRoles(username: string, roles: string[]) {
-    //                  {{url}}/api/admin/edit-roles/lisa?roles=Moderator,Member
     return this.http.post(this.baseUrl + 'admin/edit-roles/'+ username + '?roles=' + roles, {});
   }
 
