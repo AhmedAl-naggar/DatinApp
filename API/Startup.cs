@@ -5,10 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using API.ApplicationIdentityExtensions;
 using API.ApplicationServiceExtensions;
 using API.Middelware;
-using API.Interfaces;
-using API.Data;
-using API.Helpers;
-using System.Text.Json.Serialization;
 
 namespace API
 {
@@ -27,12 +23,7 @@ namespace API
         {
             services.AddApplicationServices(_config);
             services.AddControllers();
-            
-//             services.AddControllers().AddJsonOptions(x =>
-//    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
-
             services.AddCors();;
-                       
             services.AddIdentitiyServices(_config);
 
         }
@@ -40,11 +31,6 @@ namespace API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
-            // if (env.IsDevelopment())
-            // {
-            //     app.UseDeveloperExceptionPage();
-            // }
 
             app.UseMiddleware<ExceptionMiddelware>();
 

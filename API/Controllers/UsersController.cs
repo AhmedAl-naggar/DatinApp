@@ -30,6 +30,7 @@ namespace API.Controllers
 
         //https://localhost:5001/api/users
         //GetAllUsers
+        //[Authorize(Roles ="Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
         {
@@ -38,14 +39,16 @@ namespace API.Controllers
             userParams.CurrentUsername = user.UserName; 
             if (!string.IsNullOrEmpty(user.Gender))
             {
-                userParams.Gender = user.Gender == "male"?"female":"male";
+                userParams.Gender = user.Gender == "male" ? "female" : "male";
             }
+
             var users = await _userRepository.GetMembersAsync(userParams);
             Response.AddPaginationHeader(users.CurrentPage, users.PageSize,users.TotalCount, users.TotalPages);
             return Ok(users);
         }
 
         //GetUserByName
+        //[Authorize(Roles ="Member")]
         [HttpGet("{username}")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
