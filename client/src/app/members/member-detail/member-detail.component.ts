@@ -6,6 +6,7 @@ import { Member } from 'src/_models/Member';
 import { Message } from 'src/_models/Message';
 import { MembersService } from 'src/_services/member-service.service';
 import { MessageService } from 'src/_services/message.service';
+import { PresenceService } from 'src/_services/presence.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -21,6 +22,7 @@ export class MemberDetailComponent implements OnInit {
   messages: Message[] = [];
 
   constructor(
+    public presence: PresenceService,
     private messageService: MessageService,
     private router: ActivatedRoute) { }
 
